@@ -38,20 +38,31 @@
 <p id="resultInfo" class="note" style="margin-top:8px;"></p>
 
 
-          <ul class="links">
-            {% for item in site.data.links %}
-            <li>
-              <a class="link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
-                <div class="link-top">
-                  <p class="link-title">{{ item.title }}</p>
-                  {% if item.tag %}<span class="tag">{{ item.tag }}</span>{% endif %}
-                </div>
-                {% if item.desc %}<p class="link-desc">{{ item.desc }}</p>{% endif %}
-                <p class="link-url">{{ item.url | replace: "https://", "" | replace: "http://", "" }}</p>
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
+          <div id="list">
+  {% for group in site.data.links %}
+    <h3 class="cat">{{ group.category }}</h3>
+    <ul class="links">
+      {% for item in group.items %}
+      <li class="item"
+          data-title="{{ item.title | escape }}"
+          data-desc="{{ item.desc | default: '' | escape }}"
+          data-url="{{ item.url | escape }}"
+          data-tag="{{ item.tag | default: '' | escape }}"
+          data-cat="{{ group.category | escape }}">
+        <a class="link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
+          <div class="link-top">
+            <p class="link-title">{{ item.title }}</p>
+            {% if item.tag %}<span class="tag">{{ item.tag }}</span>{% endif %}
+          </div>
+          {% if item.desc %}<p class="link-desc">{{ item.desc }}</p>{% endif %}
+          <p class="link-url">{{ item.url | replace: "https://", "" | replace: "http://", "" }}</p>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+</div>
+
         </div>
       </section>
 
