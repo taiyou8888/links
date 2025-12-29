@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Links</title>
+  <meta name="description" content="公開用リンク集（静的・軽量・永続公開）" />
+  <style>
+    :root{
+      --bg:#0b1220;
+      --panel:#0f1a2e;
+      --card:#111f38;
+      --text:#e8eefc;
+      --muted:#b7c4e6;
+      --line:rgba(255,255,255,.10);
+      --accent:#7aa2ff;
+      --accent2:#56d6c2;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:16px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg:#f6f7fb;
+        --panel:#ffffff;
+        --card:#ffffff;
+        --text:#0b1220;
+        --muted:#42526b;
+        --line:rgba(0,0,0,.10);
+        --accent:#245bff;
+        --accent2:#0aa38a;
+        --shadow:0 10px 30px rgba(18,38,63,.12);
+      }
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system, "Segoe UI", Roboto, "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+      background: radial-gradient(1200px 600px at 20% 0%, rgba(122,162,255,.18), transparent 60%),
+                  radial-gradient(900px 500px at 80% 10%, rgba(86,214,194,.16), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.65;
+    }
+    a{color:inherit}
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px 60px;
+    }
+    header{
+      padding: 22px 18px;
+      background: linear-gradient(135deg, rgba(122,162,255,.18), rgba(86,214,194,.10));
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .title{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+    h1{
+      margin:0;
+      font-size: 28px;
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size: 14px;
+    }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding: 8px 10px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-size: 12px;
+    }
+    main{margin-top: 18px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1.2fr .8fr}
+    }
+
+    section{
+      background: var(--panel);
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .sec-h{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding: 14px 16px;
+      border-bottom:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+    }
+    .icon{
+      width: 28px;
+      height: 28px;
+      display:grid;
+      place-items:center;
+      border-radius: 10px;
+      background: rgba(122,162,255,.18);
+      border: 1px solid var(--line);
+      flex: 0 0 auto;
+    }
+    .sec-title{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.2px;
+    }
+    .sec-body{padding: 12px 16px 16px}
+    .note{
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Link cards */
+    .links{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+    .link{
+      display:block;
+      text-decoration:none;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: var(--card);
+      transition: transform .08s ease, border-color .12s ease, background .12s ease;
+    }
+    .link:hover{
+      transform: translateY(-1px);
+      border-color: rgba(122,162,255,.45);
+      background: linear-gradient(180deg, rgba(122,162,255,.10), transparent 60%), var(--card);
+    }
+    .link-top{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .link-title{
+      font-weight: 700;
+      margin:0;
+      font-size: 15px;
+    }
+    .tag{
+      font-size: 11px;
+      color: var(--muted);
+      border:1px solid var(--line);
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space:nowrap;
+      background: rgba(255,255,255,.05);
+    }
+    .link-desc{
+      margin:6px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .link-url{
+      margin:8px 0 0;
+      font-size: 12px;
+      color: rgba(122,162,255,.95);
+      word-break: break-all;
+    }
+
+    footer{
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      opacity: .9;
+    }
+    .smalllist{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    code{
+      background: rgba(255,255,255,.07);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <div>
+          <h1>Links</h1>
+          <p class="subtitle">公開用リンク集（静的 / 軽量 / 永続公開）</p>
+        </div>
+        <div class="pill">更新：不定期</div>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- 左：メインのリンク -->
+      <section>
+        <div class="sec-h">
+          <div class="icon">📘</div>
+          <h2 class="sec-title">記事・ドキュメント</h2>
+        </div>
+        <div class="sec-body">
+          <p class="note">よく見られるものから順に置くと便利です。</p>
+
+          <ul class="links">
+            <!-- ここからリンクを増やす -->
+            <li>
+              <a class="link" href="https://example.com" target="_blank" rel="noopener noreferrer">
+                <div class="link-top">
+                  <p class="link-title">大学改革の一つとして、事業促進がある</p>
+                  <span class="tag">記事</span>
+                </div>
+                <p class="link-desc">短い説明（任意）。リンク先の要点を1行で。</p>
+                <p class="link-url">example.com</p>
+              </a>
+            </li>
+
+            <li>
+              <a class="link" href="https://example.com/2" target="_blank" rel="noopener noreferrer">
+                <div class="link-top">
+                  <p class="link-title">記事タイトル2</p>
+                  <span class="tag">メモ</span>
+                </div>
+                <p class="link-desc">ここも1行でOK。省略してもOK。</p>
+                <p class="link-url">example.com/2</p>
+              </a>
+            </li>
+            <!-- ここまで -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- 右：このページについて / ルール -->
+      <section>
+        <div class="sec-h">
+          <div class="icon">ℹ️</div>
+          <h2 class="sec-title">このページについて</h2>
+        </div>
+        <div class="sec-body">
+          <ul class="smalllist">
+            <li>GitHub Pages を利用した静的リンク集</li>
+            <li>サーバー・CMSなし（壊れにくい）</li>
+            <li>永久公開向け（リンクだけ置く用途）</li>
+          </ul>
+
+          <p class="note" style="margin-top:12px;">
+            将来の拡張（Hugo/Jekyll）を見据えるなら、リンクは
+            <code>links.json</code> や <code>_data/links.yml</code> に寄せる設計が楽です。
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      © <span id="y"></span> taiyou8888 / links
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
