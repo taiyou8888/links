@@ -92,6 +92,69 @@
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+
+  <script>
+(function(){
+  const q = document.getElementById('q');
+  const clear = document.getElementById('clear');
+  const info = document.getElementById('resultInfo');
+  const items = Array.from(document.querySelectorAll('.item'));
+
+  function norm(s){
+    return (s || '')
+      .toLowerCase()
+      .replace(/\s+/g,' ')
+      .trim();
+  }
+
+  function apply(){
+    const query = norm(q.value);
+
+    // 空なら全表示
+    if(!query){
+      items.forEach(el => el.style.display = '');
+      info.textContent = '';
+      // 空検索のときはカテゴリ見出しを戻す
+      document.querySelectorAll('.cat').forEach(h => h.style.display = '');
+      return;
+    }
+
+    let shown = 0;
+    items.forEach(el => {
+      const hay = norm([
+        el.dataset.title,
+        el.dataset.desc,
+        el.dataset.url,
+        el.dataset.tag,
+        el.dataset.cat
+      ].join(' '));
+
+      const ok = hay.includes(query);
+      el.style.display = ok ? '' : 'none';
+      if(ok) shown++;
+    });
+
+    // カテゴリ見出し：そのカテゴリに表示アイテムが無いなら隠す
+    document.querySelectorAll('.cat').forEach(h => {
+      const cat = norm(h.textContent);
+      // hの次に来る ul.links の中で表示されてる item があるか
+      const ul = h.nextElementSibling;
+      const any = ul && ul.querySelector('.item:not([style*="display: none"])');
+      h.style.display = any ? '' : 'none';
+      if(ul) ul.style.display = any ? '' : 'none';
+    });
+
+    info.textContent = `検索結果：${shown} 件`;
+  }
+
+  q.addEventListener('input', apply);
+  clear.addEventListener('click', () => { q.value=''; q.focus(); apply(); });
+
+  // 初期表示
+  apply();
+})();
+</script>
+
 </body>
 </html>
 
