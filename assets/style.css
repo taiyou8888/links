@@ -196,3 +196,41 @@
       border: 1px solid var(--line);
     }
   </style>
+.searchbar{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  padding:12px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:14px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(10px);
+  margin: 10px 0 6px;
+}
+.searchbar input{
+  flex:1;
+  font-size:16px;
+  padding:10px 12px;
+  border:1px solid rgba(0,0,0,.12);
+  border-radius:12px;
+  outline:none;
+  background:#fff;
+}
+.searchbar input:focus{
+  border-color: rgba(0,0,0,.25);
+}
+.searchbar button{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.12);
+  background:#fff;
+  cursor:pointer;
+  font-size:18px;
+}
+.cat{
+  margin: 16px 0 10px;
+  font-size: 16px;
+  opacity: .85;
+}
+
