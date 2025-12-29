@@ -1,3 +1,5 @@
+---
+---
 <!doctype html>
 <html lang="ja">
 <head>
@@ -5,6 +7,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Links</title>
   <meta name="description" content="公開用リンク集（静的・軽量・永続公開）" />
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
@@ -20,7 +23,6 @@
     </header>
 
     <main class="grid">
-      <!-- 左：メインのリンク -->
       <section>
         <div class="sec-h">
           <div class="icon">📘</div>
@@ -30,34 +32,22 @@
           <p class="note">よく見られるものから順に置くと便利です。</p>
 
           <ul class="links">
-            <!-- ここからリンクを増やす -->
+            {% for item in site.data.links %}
             <li>
-              <a class="link" href="https://example.com" target="_blank" rel="noopener noreferrer">
+              <a class="link" href="{{ item.url }}" target="_blank" rel="noopener noreferrer">
                 <div class="link-top">
-                  <p class="link-title">大学改革の一つとして、事業促進がある</p>
-                  <span class="tag">記事</span>
+                  <p class="link-title">{{ item.title }}</p>
+                  {% if item.tag %}<span class="tag">{{ item.tag }}</span>{% endif %}
                 </div>
-                <p class="link-desc">短い説明（任意）。リンク先の要点を1行で。</p>
-                <p class="link-url">example.com</p>
+                {% if item.desc %}<p class="link-desc">{{ item.desc }}</p>{% endif %}
+                <p class="link-url">{{ item.url | replace: "https://", "" | replace: "http://", "" }}</p>
               </a>
             </li>
-
-            <li>
-              <a class="link" href="https://example.com/2" target="_blank" rel="noopener noreferrer">
-                <div class="link-top">
-                  <p class="link-title">記事タイトル2</p>
-                  <span class="tag">メモ</span>
-                </div>
-                <p class="link-desc">ここも1行でOK。省略してもOK。</p>
-                <p class="link-url">example.com/2</p>
-              </a>
-            </li>
-            <!-- ここまで -->
+            {% endfor %}
           </ul>
         </div>
       </section>
 
-      <!-- 右：このページについて / ルール -->
       <section>
         <div class="sec-h">
           <div class="icon">ℹ️</div>
@@ -69,10 +59,8 @@
             <li>サーバー・CMSなし（壊れにくい）</li>
             <li>永久公開向け（リンクだけ置く用途）</li>
           </ul>
-
           <p class="note" style="margin-top:12px;">
-            将来の拡張（Hugo/Jekyll）を見据えるなら、リンクは
-            <code>links.json</code> や <code>_data/links.yml</code> に寄せる設計が楽です。
+            将来の拡張（Hugo/Jekyll）を見据え、リンクは <code>_data/links.yml</code> に集約。
           </p>
         </div>
       </section>
@@ -88,3 +76,4 @@
   </script>
 </body>
 </html>
+
