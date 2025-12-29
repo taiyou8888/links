@@ -31,6 +31,13 @@
         <div class="sec-body">
           <p class="note">よく見られるものから順に置くと便利です。</p>
 
+          <div class="searchbar">
+  <input id="q" type="search" placeholder="検索（タイトル / 説明 / URL / カテゴリ / タグ）" autocomplete="off">
+  <button id="clear" type="button" aria-label="クリア">×</button>
+</div>
+<p id="resultInfo" class="note" style="margin-top:8px;"></p>
+
+
           <ul class="links">
             {% for item in site.data.links %}
             <li>
