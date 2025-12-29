@@ -1,0 +1,9 @@
+- title: 大学改革の一つとして、事業促進がある
+  url: https://example.com
+  tag: 記事
+  desc: 短い説明（任意）。リンク先の要点を1行で。
+
+- title: 記事タイトル2
+  url: https://example.com/2
+  tag: メモ
+  desc: ここも1行でOK。省略してもOK。
